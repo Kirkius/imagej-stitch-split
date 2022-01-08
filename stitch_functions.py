@@ -24,6 +24,7 @@ def stitchImages(imagejObject, sourceDirectory, outputDirectory, inputFileNames,
     inputFileNames);
 
     saveAs("Tiff", outputDirectory + "/" + outputName + ".tif");
+    run("Close All");
     }
 
     action(sourceDirectory, outputDirectory, inputFileNames, outputName)
