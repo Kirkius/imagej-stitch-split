@@ -41,22 +41,46 @@ def stitchImages(imagejObject, sourceDirectory, outputDirectory, inputFileNames,
 
 
 def getInputFiles(directory, directory_path):
+    # Initialize a list with the current mouse number
     inputFileNames = [directory]
+   
+    # Initialize an index
     index = 0
+   
+    # Loop over files in the provided directory
     for entry in os.scandir(directory_path):
+        
+        # If a files ends with _component_data.tif
         if (entry.path.endswith("_component_data.tif")):
+           
+            # Add it to the list in the format ImageJ expects (e.g. 123456_0)
             inputFileNames.append(directory + "_" + str(index))
+            
+            # Increment the index
             index += 1
+    
+    # Once all files have been added to the list, convert list to string
     inputFileNames = ' '.join(inputFileNames)
+    
+    # Return string
     return inputFileNames
 
 
 def makeOutputDirectory(directory, outputRoot):
+    # Initialize already_exist flag and set it to false
     already_exists = False
+
+    # Construct output directory from the output root and the mouse number
     outputDirectory = os.path.join(outputRoot, directory)
+
+    # If a folder with the given mouse number doens't exist yet, create it
     if not os.path.exists(outputDirectory):
         os.mkdir(outputDirectory)
+
+    # Else return that the folder already exists and set the flag to true
     else:
         print('Output Directory already exists! \n{0}'.format(outputDirectory))
         already_exists = True
+    
+    # Return the path to the output directory and the flag
     return outputDirectory, already_exists
