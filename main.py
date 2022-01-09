@@ -50,7 +50,7 @@ try:
         
         # For some reason on Win7 the Explorer accesses the Thumbs.db file which breaks the script
         if directory == 'Thumbs.db':
-            pass
+            continue
         
         # Since folder are named with the mouse number we output that here
         print('Processing images with mouse number: {0}'.format(directory))
