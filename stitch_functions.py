@@ -43,8 +43,7 @@ def stitchImages(imagejObject, sourceDirectory, outputDirectory, inputFileNames,
 
 def getInputFiles(directory, directory_path):
     # Initialize a list with the current mouse number
-    inputFileNames = [directory]
-   
+    inputFileNames = []
     # Initialize an index
     index = 0
    
@@ -54,9 +53,18 @@ def getInputFiles(directory, directory_path):
         # If a files ends with _component_data.tif
         if (entry.path.endswith("_component_data.tif")):
            
-            # Add it to the list in the format ImageJ expects (e.g. 123456_0)
-            inputFileNames.append(directory + "_" + str(index))
+           # If there is a space in the file name ImageJ expects a specific list of file names
+            if " " in entry.path:
+                # If this is the first iteration, start the list with the mouse number
+                if index == 0:
+                    inputFileNames.append(directory)
+                # Add it to the list in the format ImageJ expects (e.g. 123456_0)
+                inputFileNames.append(directory + "_" + str(index))
             
+            # If there is no space in the filename, pass the whole filename
+            else:
+                inputFileNames.append(entry.name)
+
             # Increment the index
             index += 1
     

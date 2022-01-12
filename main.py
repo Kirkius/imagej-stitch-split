@@ -78,9 +78,9 @@ try:
     print('Processed {0} mouse numbers!'.format(stitch_index))
 
 
-    #================
-    #|Split Channels|
-    #================
+    # ================
+    # |Split Channels|
+    # ================
 
     # Loop through the output directory
     for subdirectory, directory, files in os.walk(outputRoot):
@@ -103,7 +103,7 @@ try:
             
             # If there is more than one file in the output directory we assume that the channel have already been split
             # This prevents accidental overwriting
-            elif len(files) > 1:
+            elif len(files) >= 3:
                 print(subdirectory + ' has more than 1 file! \nAssuming channels are already split.') 
     
     # Return amount of multichannel images that have been processed.
