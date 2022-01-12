@@ -7,7 +7,6 @@ def stitchImages(imagejObject, sourceDirectory, outputDirectory, inputFileNames,
     #@ String inputFileNames
     #@ String outputName
 
-    print(sourceDirectory)
     function action (sourceDirectory, outputDirectory, inputFileNames, outputName){
     run("Grid/Collection stitching", 
     "type=[Unknown position]" +
@@ -69,8 +68,7 @@ def getInputFiles(directory, directory_path):
             index += 1
     
     # Once all files have been added to the list, convert list to string
-    inputFileNames = ' '.join(inputFileNames)
-    print(inputFileNames)
+    inputFileNames = ' '.join(inputFileNames).lower()
     
     # Return string
     return inputFileNames

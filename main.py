@@ -68,6 +68,11 @@ try:
         
         # If the output folder was created call the ImageJ stitch macro and increment the index
         if not already_exists:
+            print("Stitching Images with these parameters:\n\
+            Source Path: \n {0} \n\
+            Output Path: \n {1} \n\
+            Input Files: \n {2} \n\
+            Output Name: \n {3}.tif \n".format(directory_path, outputDirectory, inputFileNames, directory))
             stitchImages(ij, directory_path, outputDirectory, inputFileNames, directory)
             stitch_index += 1
         # If the output folder was not created skip that mouse number
