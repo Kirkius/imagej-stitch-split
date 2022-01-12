@@ -70,6 +70,7 @@ def getInputFiles(directory, directory_path):
     
     # Once all files have been added to the list, convert list to string
     inputFileNames = ' '.join(inputFileNames)
+    print(inputFileNames)
     
     # Return string
     return inputFileNames
